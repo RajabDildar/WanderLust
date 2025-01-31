@@ -1,0 +1,125 @@
+:root {
+  --logoClr: #fe424d;
+  --txtClr: #222222;
+  --imgHeight: 20rem;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  font-family: poppins, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  flex: 1;
+}
+
+/* navbar */
+.navbar {
+  height: 5rem;
+  background-color: white;
+}
+
+.fa-compass {
+  color: var(--logoClr);
+  font-size: 2rem;
+}
+
+.nav-link {
+  color: var(--txtClr);
+}
+
+.f-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 10rem;
+  background: #ebebeb;
+}
+.f-info p {
+  margin-block: 1rem;
+}
+
+.f-info-socials {
+  font-size: 2rem;
+  display: flex;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.f-info-links a {
+  text-decoration: none;
+  color: var(--txtClr);
+  margin-right: 1rem;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/* card */
+.row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  justify-items: center;
+  row-gap: 2rem;
+  column-gap: 1rem;
+}
+
+.card {
+  border: none;
+  padding: 0;
+}
+
+.card-img-top {
+  height: var(--imgHeight);
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+.card-text .para1 {
+  font-weight: 700;
+}
+
+.card-text .para2 {
+  font-weight: 500;
+  user-select: none;
+}
+
+.card a {
+  text-decoration: none;
+  color: var(--txtClr);
+}
+
+.card-img-overlay {
+  opacity: 0;
+  background-color: black;
+  border-radius: 1rem;
+  height: var(--imgHeight);
+
+  &:hover {
+    opacity: 0.1;
+  }
+}
+
+/* new listing page */
+textarea {
+  resize: none;
+}
+
+.add-btn {
+  background-color: var(--logoClr);
+  border: none;
+
+  &:hover {
+    background-color: var(--logoClr);
+    opacity: 0.9;
+  }
+}
