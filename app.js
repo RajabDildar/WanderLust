@@ -35,7 +35,7 @@ main()
 
 //creating routes
 app.get("/", (req, res) => {
-  res.send("hello!");
+  res.redirect("/listings");
 });
 
 //home route

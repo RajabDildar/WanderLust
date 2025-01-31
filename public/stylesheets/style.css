@@ -84,11 +84,11 @@ body {
   border-radius: 1rem;
 }
 
-.card-text .para1 {
+.para1 {
   font-weight: 700;
 }
 
-.card-text .para2 {
+.para2 {
   font-weight: 500;
   user-select: none;
 }
@@ -114,12 +114,19 @@ textarea {
   resize: none;
 }
 
-.add-btn {
+.add-btn,
+.edit-btn {
   background-color: var(--logoClr);
   border: none;
+  padding-inline: 1.5rem;
 
   &:hover {
     background-color: var(--logoClr);
     opacity: 0.9;
   }
+}
+
+.del-form {
+  display: inline-block;
+  margin-left: 1rem;
 }
