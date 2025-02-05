@@ -3,10 +3,11 @@ const mongoose = require("mongoose");
 const listingSchema = new mongoose.Schema({
   title: {
     type: String,
-    require: true,
+    required: true,
   },
   description: {
     type: String,
+    required: true,
   },
   image: {
     type: String,
@@ -20,13 +21,15 @@ const listingSchema = new mongoose.Schema({
   price: {
     type: Number,
     min: 0,
+    required: true,
   },
   location: {
     type: String,
+    required: true,
   },
   country: {
     type: String,
-    require: true,
+    required: true,
   },
 });
 
