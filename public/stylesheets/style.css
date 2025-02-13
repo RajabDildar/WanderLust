@@ -72,7 +72,7 @@ body {
   column-gap: 1rem;
 }
 
-.card {
+.listing-card {
   border: none;
   padding: 0;
 }
@@ -81,10 +81,6 @@ body {
   height: var(--imgHeight);
   object-fit: cover;
   border-radius: 1rem;
-}
-
-.para1 {
-  font-weight: 700;
 }
 
 .para2 {

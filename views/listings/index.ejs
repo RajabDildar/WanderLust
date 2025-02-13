@@ -3,7 +3,7 @@
   <h3 class="mt-3 mb-3">All listings!</h3>
   <div class="row p-4">
     <% for( let listing of allListings ) { %>
-    <div class="card" style="width: 100%">
+    <div class="card listing-card" style="width: 100%">
       <a href="listings/<%= listing._id %>">
         <img
           src="<%= listing.image %>"
