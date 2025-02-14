@@ -1,4 +1,4 @@
-const joi = require("joi"); //joi is npm package used for schema validations in javascript
+const joi = require("joi"); //joi is npm package used for server-side (schema) validations in javascript
 // reference website => https://joi.dev/api/?v=17.13.3
 
 module.exports.listingSchema = joi.object({
