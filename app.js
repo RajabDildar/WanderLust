@@ -8,6 +8,8 @@ const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js");
 const listings = require("./routes/listing.js");
 const reviews = require("./routes/reviews");
+const session = require("express-session");
+const flash = require("connect-flash");
 
 //setting ejs as view engine and setting ejs-mate
 app.set("view engine", "ejs");
@@ -35,7 +37,33 @@ main()
   .then((res) => console.log("connected with db"))
   .catch((err) => console.log(err));
 
+//session and flash (must be wriitten before routes)
+const sessionOptions = {
+  secret: "mysupersecretcode",
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    expires: Date.now() + 7 * 24 * 60 * 60 * 1000, //this will tell how long to keep user logged in (depending upon last login on site).
+    maxAge: 7 * 24 * 60 * 60 * 1000, //7 * 24 * 60 * 60 * 1000 = milliseconds in 7 days
+    httpOnly: true, //this is for security purposes, (for ross scipting attacks).
+  },
+};
+
+app.use(session(sessionOptions));
+app.use(flash());
+
+app.use((req, res, next) => {
+  res.locals.success = req.flash("success");
+  res.locals.error = req.flash("error");
+  next();
+});
+
 //routes
+//creating routes
+app.get("/", (req, res) => {
+  res.redirect("/listings");
+});
+
 app.use("/listings", listings);
 app.use("/listings/:id/reviews", reviews);
 
