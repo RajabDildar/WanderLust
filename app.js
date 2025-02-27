@@ -49,7 +49,7 @@ const sessionOptions = {
   cookie: {
     expires: Date.now() + 7 * 24 * 60 * 60 * 1000, //this will tell how long to keep user logged in (depending upon last login on site).
     maxAge: 7 * 24 * 60 * 60 * 1000, //7 * 24 * 60 * 60 * 1000 = milliseconds in 7 days
-    httpOnly: true, //this is for security purposes, (for ross scipting attacks).
+    httpOnly: true, //this is for security purposes, (for cross scipting attacks).
   },
 };
 
@@ -65,6 +65,7 @@ passport.deserializeUser(User.deserializeUser());
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
+  res.locals.currUser = req.user;
   next();
 });
 
@@ -72,15 +73,6 @@ app.use((req, res, next) => {
 //creating routes
 app.get("/", (req, res) => {
   res.redirect("/listings");
-});
-
-app.get("/demouser", async (req, res) => {
-  let fakeUser = new User({
-    email: "student1@apnacollege.in",
-    username: "delta-student1",
-  });
-  let registeredUser = await User.register(fakeUser, "helloworld");
-  res.send(registeredUser);
 });
 
 app.use("/listings", listingRouter);
