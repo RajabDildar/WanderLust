@@ -7,6 +7,7 @@
         method="post"
         action="/listings"
         class="needs-validation"
+        enctype="multipart/form-data"
         novalidate
       >
         <div>
@@ -38,12 +39,15 @@
         </div>
 
         <div>
-          <label class="form-label mt-3" for="image">Add image link: </label>
+          <label class="form-label mt-3" for="image"
+            >Upload Listing Image</label
+          >
           <input
             class="form-control"
             name="listing[image]"
-            type="text"
+            type="file"
             id="image"
+            required
           />
           <div class="valid-feedback">
             If you are not providing image link, a default image will be set.

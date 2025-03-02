@@ -7,9 +7,12 @@
   <% for(review of listing.reviews) { %>
   <div class="card col mb-3">
     <div class="card-body">
-      <div class="card-title"><%= review.createdby.username %></div>
+      <div class="card-title">@<%= review.createdby.username %></div>
+      <p
+        class="starability-result card-text"
+        data-rating="<%= review.rating %>"
+      ></p>
       <div class="card-text"><%= review.comment %></div>
-      <div class="card-text"><%= review.rating %> Stars</div>
       <% if (currUser && review.createdby.equals(currUser._id)) { %>
       <form
         action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
