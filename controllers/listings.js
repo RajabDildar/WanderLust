@@ -1,4 +1,5 @@
 const Listing = require("../models/listing.js");
+const opencage = require("opencage-api-client");
 
 module.exports.index = async (req, res) => {
   const allListings = await Listing.find({});
@@ -10,14 +11,20 @@ module.exports.renderNewForm = (req, res) => {
 };
 
 module.exports.createNewListing = async (req, res) => {
-  console.log(req.file);
   let url = req.file.path;
   let filename = req.file.filename;
   let newListing = new Listing(req.body.listing);
   newListing.owner = req.user._id;
   newListing.image = { url, filename };
+
+  let data = await opencage.geocode({
+    q: newListing.location,
+    key: process.env.MAP_API_KEY,
+  });
+  const place = data.results[0];
+  let listingCoordinates = [place.geometry.lng, place.geometry.lat];
+  newListing.geometry.coordinates = listingCoordinates;
   await newListing.save();
-  console.log(`-----------------`, newListing);
   req.flash("success", "New listing created successfully!");
   res.redirect("/listings");
 };
@@ -36,7 +43,9 @@ module.exports.showListing = async (req, res) => {
     req.flash("error", "Listing you requested for does not exist.");
     return res.redirect("/listings");
   }
-  res.render("listings/show.ejs", { listing });
+  res.render("listings/show.ejs", {
+    listing,
+  });
 };
 
 module.exports.renderEditForm = async (req, res) => {

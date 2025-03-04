@@ -39,6 +39,17 @@ const listingSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User",
   },
+  geometry: {
+    type: {
+      type: String,
+      enum: ["Point"], // GeoJSON type
+      default: "Point",
+    },
+    coordinates: {
+      type: [Number], // [longitude, latitude] format (GeoJSON standard)
+      required: true,
+    },
+  },
 });
 
 //deleting all reviews linked with the particular listing
