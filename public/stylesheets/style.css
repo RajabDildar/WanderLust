@@ -34,6 +34,53 @@ body {
 
 .nav-link {
   color: var(--txtClr);
+  border-radius: 1.5rem;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    background-color: #f7f7f7;
+  }
+}
+
+.navbar-brand {
+  color: var(--logoClr);
+  display: flex;
+  gap: 5px;
+
+  &:hover {
+    color: var(--logoClr);
+  }
+}
+
+.dropdown-toggle {
+  border: 1px solid #dddddd;
+  border-radius: 1.5rem;
+  margin-left: 0.5rem;
+  padding: 0.5rem;
+  background-color: #fff;
+
+  &:hover {
+    box-shadow: 0px 0.1rem 0.5rem rgba(0, 0, 0, 0.15);
+  }
+
+  &::after {
+    display: none;
+  }
+}
+
+.dropdown-menu[data-bs-popper] {
+  left: -5rem;
+}
+
+.user-btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-btn:last-child {
+  height: 2rem;
 }
 
 .f-info {
