@@ -13,7 +13,8 @@
           <p class="card-text"><%= listing.description %></p>
           <p class="card-text"><i>host:</i> <%= listing.owner.username %></p>
           <p class="card-text">
-            &#36; <%= listing.price.toLocaleString("en-US") %>
+            &#36; <%= listing.totalPriceWithTax.toLocaleString("en-US") %> (18%
+            GST is included)
           </p>
           <p class="card-text"><%= listing.location %></p>
           <p class="card-text"><%= listing.country %></p>

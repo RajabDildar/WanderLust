@@ -20,3 +20,29 @@
     );
   });
 })();
+
+//  tax switch toggler
+let flexSwitchCheckReverse = document.querySelector("#flexSwitchCheckReverse");
+let priceParas = document.querySelectorAll(".price");
+let totalPriceWithTaxParas = document.querySelectorAll(".totalPriceWithTax");
+
+for (let para of priceParas) {
+  para.style.display = "none";
+}
+
+flexSwitchCheckReverse.addEventListener("click", () => {
+  for (let para of priceParas) {
+    if (para.style.display != "none") {
+      para.style.display = "none";
+    } else {
+      para.style.display = "inline-block";
+    }
+  }
+  for (let para of totalPriceWithTaxParas) {
+    if (para.style.display != "none") {
+      para.style.display = "none";
+    } else {
+      para.style.display = "inline-block";
+    }
+  }
+});

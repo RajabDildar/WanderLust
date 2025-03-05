@@ -1,25 +1,35 @@
-<nav class="navbar mb-3 navbar-expand-md sticky-top border-bottom">
+<nav class="navbar mb-3 navbar-expand-lg sticky-top border-bottom">
   <div class="container-fluid">
     <a class="navbar-brand" href="/"
       ><i class="fa-regular fa-compass"></i> Wanderlust</a
     >
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNavAltMarkup"
-      aria-controls="navbarNavAltMarkup"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link" href="/listings">Explore Wanderlust Stays</a>
-      </div>
+    <div class="navbar-nav search-wrapper">
+      <form class="d-flex search-box" role="search">
+        <input
+          class="form-control search-input"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <button class="search-btn" type="submit">Search</button>
+      </form>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse ms-auto" id="navbarNavAltMarkup">
       <div class="navbar-nav ms-auto">
-        <a class="nav-link" href="/listings/new">Host with Wanderlust</a>
+        <a class="nav-link me-3" href="/listings">Explore Wanderlust Stays</a>
+        <a class="nav-link me-3" href="/listings/new">Host with Wanderlust</a>
 
         <!-- user btn dropdown -->
         <div class="dropdown">

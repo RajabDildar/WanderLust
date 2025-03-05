@@ -9,6 +9,7 @@
 
 * {
   font-family: poppins, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
 }
 
 body {
@@ -136,6 +137,10 @@ body {
   user-select: none;
 }
 
+.hide {
+  display: none;
+}
+
 .card a {
   text-decoration: none;
   color: var(--txtClr);
@@ -203,4 +208,85 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .ol-popup {
   bottom: 25px;
+}
+
+/* filters */
+.filters-container {
+  display: flex;
+  gap: 1rem;
+}
+.filters {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+  cursor: pointer;
+  opacity: 0.7;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.filters-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.form-switch {
+  border: 1px solid #dddddd;
+  border-radius: 1rem;
+
+  &:hover {
+    border: 1px solid black;
+    background-color: #f7f7f7;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .filters {
+    align-items: start;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .search-wrapper {
+    width: 100%;
+  }
+}
+
+/* search-bar */
+
+.search-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.search-box {
+  outline: 2px solid #dddddd;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.search-btn {
+  border: none;
+  background-color: var(--logoClr);
+  color: #fff;
+  border-radius: 1.5rem;
+  padding: 0.5rem 1rem;
+}
+
+.search-input {
+  border: none;
+  border-radius: 1.5rem;
+
+  &:focus-within {
+    outline: none;
+    box-shadow: none;
+  }
 }

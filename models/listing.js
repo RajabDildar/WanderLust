@@ -50,6 +50,9 @@ const listingSchema = new Schema({
       required: true,
     },
   },
+  totalPriceWithTax: {
+    type: Number,
+  },
 });
 
 //deleting all reviews linked with the particular listing

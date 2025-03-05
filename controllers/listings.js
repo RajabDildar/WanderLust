@@ -16,6 +16,10 @@ module.exports.createNewListing = async (req, res) => {
   let newListing = new Listing(req.body.listing);
   newListing.owner = req.user._id;
   newListing.image = { url, filename };
+  let taxRate = 18;
+  let totalTax = (newListing.price * taxRate) / 100;
+  let totalPriceWithTax = newListing.price + totalTax;
+  newListing.totalPriceWithTax = totalPriceWithTax;
 
   let data = await opencage.geocode({
     q: newListing.location,
