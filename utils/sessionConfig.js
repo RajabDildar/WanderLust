@@ -1,6 +1,18 @@
+const session = require("express-session");
+const MongoStore = require("connect-mongo");
+
+const store = MongoStore.create({
+  mongoUrl: process.env.ATLASDB_URL,
+  crypto: {
+    secret: process.env.SECRET,
+  },
+  touchAfter: 24 * 3600, //in seconds
+});
+
 //session and flash (must be wriitten before routes)
 const sessionOptions = {
-  secret: "mysupersecretcode",
+  store,
+  secret: process.env.SECRET,
   resave: false,
   saveUninitialized: true,
   cookie: {
@@ -10,4 +22,4 @@ const sessionOptions = {
   },
 };
 
-module.exports = sessionOptions;
+module.exports = { store, sessionOptions };

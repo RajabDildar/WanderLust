@@ -8,7 +8,7 @@ const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js");
-const sessionOptions = require("./utils/sessionOpts.js");
+const sessionConfig = require("./utils/sessionConfig.js");
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/reviews");
 const userRouter = require("./routes/user.js");
@@ -34,17 +34,21 @@ app.use(express.static(path.join(__dirname, "/public")));
 app.use(methodOverride("_method"));
 
 //connecting with mongodb
-const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+const dbUrl = process.env.ATLASDB_URL;
 
 const main = async () => {
-  await mongoose.connect(MONGO_URL);
+  await mongoose.connect(dbUrl);
 };
 
 main()
   .then((res) => console.log("connected with db"))
   .catch((err) => console.log(err));
 
-app.use(session(sessionOptions));
+sessionConfig.store.on("error", () => {
+  console.log("ERROR in Mongo Session Store...");
+});
+
+app.use(session(sessionConfig.sessionOptions));
 app.use(flash());
 
 app.use(passport.initialize());
