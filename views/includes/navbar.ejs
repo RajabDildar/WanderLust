@@ -4,12 +4,18 @@
       ><i class="fa-regular fa-compass"></i> Wanderlust</a
     >
     <div class="navbar-nav search-wrapper">
-      <form class="d-flex search-box" role="search">
+      <form
+        method="post"
+        action="/listings/search"
+        class="d-flex search-box"
+        role="search"
+      >
         <input
           class="form-control search-input"
           type="search"
-          placeholder="Search"
+          placeholder="Search Country"
           aria-label="Search"
+          name="country"
         />
         <button class="search-btn" type="submit">Search</button>
       </form>

@@ -3,6 +3,7 @@ const router = express.Router();
 const wrapAsync = require("../utils/wrapAsync.js");
 const { validateListing, isLoggedIn, isOwner } = require("../middlewares.js");
 const listingController = require("../controllers/listings.js");
+const filtersController = require("../controllers/filters.js");
 const multer = require("multer");
 const { storage } = require("../cloudConfig.js");
 const upload = multer({ storage });
@@ -19,6 +20,15 @@ router
 
 //new route
 router.get("/new", isLoggedIn, listingController.renderNewForm);
+
+//search
+router.post("/search", wrapAsync(filtersController.searchListings));
+
+// filters
+router.get(
+  "/search/:category",
+  wrapAsync(filtersController.searchListingsByCategory)
+);
 
 router
   .route("/:id")

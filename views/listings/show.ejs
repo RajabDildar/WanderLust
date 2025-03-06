@@ -12,10 +12,29 @@
         <div class="card-body">
           <p class="card-text"><%= listing.description %></p>
           <p class="card-text"><i>host:</i> <%= listing.owner.username %></p>
-          <p class="card-text">
-            &#36; <%= listing.totalPriceWithTax.toLocaleString("en-US") %> (18%
-            GST is included)
-          </p>
+          <p class="card-text">Category: <%= listing.category %></p>
+          <div class="pricing">
+            <p class="card-text totalPriceWithTax">
+              &#36; <%= listing.totalPriceWithTax.toLocaleString("en-US") %>
+              (18% GST is included)
+            </p>
+            <p class="para2 price hide">
+              &#36; <%= listing.price.toLocaleString("en-US") %> night
+            </p>
+            <div class="form-check form-switch form-check-reverse">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="flexSwitchCheckReverse"
+              />
+              <label
+                style="user-select: none"
+                class="form-check-label"
+                for="flexSwitchCheckReverse"
+                >Display total before taxes</label
+              >
+            </div>
+          </div>
           <p class="card-text"><%= listing.location %></p>
           <p class="card-text"><%= listing.country %></p>
         </div>

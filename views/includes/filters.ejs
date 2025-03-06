@@ -84,26 +84,30 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup2">
       <div class="navbar-nav filters-container">
-        <div class="filters">
-          <i class="fa-solid fa-fire"></i>
-          <p>Trending</p>
-        </div>
-        <div class="filters">
-          <i class="fa-solid fa-bed"></i>
-          <p>Rooms</p>
-        </div>
-        <div class="filters">
+        <a href="/listings/search/Iconic%20cities" class="filters">
           <i class="fa-solid fa-mountain-city"></i>
           <p>Iconic cities</p>
-        </div>
-        <div class="filters">
+        </a>
+        <a href="/listings/search/Mountains" class="filters">
           <i class="fa-solid fa-mountain"></i>
           <p>Mountains</p>
-        </div>
-        <div class="filters">
+        </a>
+        <a href="/listings/search/Farms" class="filters">
           <i class="fa-solid fa-cow"></i>
           <p>Farms</p>
-        </div>
+        </a>
+        <a href="/listings/search/Iseland" class="filters">
+          <i class="fa-solid fa-igloo"></i>
+          <p>Iseland</p>
+        </a>
+        <a href="/listings/search/Boats" class="filters">
+          <i class="fa-solid fa-sailboat"></i>
+          <p>Boats</p>
+        </a>
+        <a href="/listings/search/Arctic" class="filters">
+          <i class="fa-regular fa-snowflake"></i>
+          <p>Arctic</p>
+        </a>
       </div>
     </div>
   </div>
@@ -113,7 +117,10 @@
       type="checkbox"
       id="flexSwitchCheckReverse"
     />
-    <label class="form-check-label" for="flexSwitchCheckReverse"
+    <label
+      style="user-select: none"
+      class="form-check-label"
+      for="flexSwitchCheckReverse"
       >Display total before taxes</label
     >
   </div>
