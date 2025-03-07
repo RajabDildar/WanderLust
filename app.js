@@ -37,15 +37,20 @@ app.use(methodOverride("_method"));
 const dbUrl = process.env.ATLASDB_URL;
 
 const main = async () => {
-  await mongoose.connect(dbUrl);
+  try {
+    await mongoose.connect(dbUrl);
+    console.log("connected with db");
+    app.listen(3000, () => console.log("server is listening"));
+  } catch (err) {
+    console.log("DB Connection Error:", err);
+    process.exit(1); // Exit the app if DB fails
+  }
 };
 
-main()
-  .then((res) => console.log("connected with db"))
-  .catch((err) => console.log(err));
+main();
 
-sessionConfig.store.on("error", () => {
-  console.log("ERROR in Mongo Session Store...");
+sessionConfig.store.on("error", (err) => {
+  console.log("Mongo Session Store Error:", err);
 });
 
 app.use(session(sessionConfig.sessionOptions));
@@ -81,6 +86,3 @@ app.use((err, req, res, next) => {
   let { statusCode = 500, message = "Something went wrong!" } = err;
   res.status(statusCode).render("error.ejs", { message });
 });
-
-//starting server
-app.listen(3000, () => console.log("server is listening"));
