@@ -38,13 +38,19 @@ const dbUrl = process.env.ATLASDB_URL;
 
 const main = async () => {
   try {
-    await mongoose.connect(dbUrl);
-    console.log("connected with db");
-   const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`Server running on port ${port}`));
+    await mongoose.connect(dbUrl, {
+      useNewUrlParser: true, // Required for new connection string parser
+      useUnifiedTopology: true, // Required for new server discovery engine
+      tls: true, // Enforce TLS/SSL
+      serverSelectionTimeoutMS: 5000, // Fail fast if no connection
+    });
+
+    console.log("Connected to DB");
+    const port = process.env.PORT || 3000;
+    app.listen(port, () => console.log(`Server running on port ${port}`));
   } catch (err) {
-    console.log("DB Connection Error:", err);
-    process.exit(1); // Exit the app if DB fails
+    console.error("DB Connection Error:", err);
+    process.exit(1);
   }
 };
 
