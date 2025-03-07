@@ -47,7 +47,9 @@ const main = async () => {
 
     console.log("Connected to DB");
     const port = process.env.PORT || 3000;
-    app.listen(port, () => console.log(`Server running on port ${port}`));
+    app.listen(port, "0.0.0.0", () =>
+      console.log(`Server running on port ${port}`)
+    );
   } catch (err) {
     console.error("DB Connection Error:", err);
     process.exit(1);
