@@ -40,7 +40,8 @@ const main = async () => {
   try {
     await mongoose.connect(dbUrl);
     console.log("connected with db");
-    app.listen(3000, () => console.log("server is listening"));
+   const port = process.env.PORT || 3000;
+app.listen(port, () => console.log(`Server running on port ${port}`));
   } catch (err) {
     console.log("DB Connection Error:", err);
     process.exit(1); // Exit the app if DB fails
